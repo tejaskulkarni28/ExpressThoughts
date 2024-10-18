@@ -6,7 +6,7 @@ const thoughtService = (props)=>{
         console.log(response)
     })
     .catch((err)=>{
-        if(err){
+        if(err){ 
             console.log("Error: " + err)
         }
     })

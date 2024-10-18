@@ -3,6 +3,7 @@ import thoughtService from "../services/thoughtService";
 const AddThought = ()=>{
     const[state, setState] = useState();
     const handleSubmit= (event)=>{
+        console.log(event);
         event.preventDefault();
         console.log(state + " handleSubmit()")
         thoughtService(state)
