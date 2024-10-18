@@ -4,6 +4,6 @@ const {addThought} = require('../controllers/addController')
 
 const router = express.Router()
 
-router.post('/add', addThought)
+router.post('/add', addThought) // here addThought is a callback function
 
 module.exports = router

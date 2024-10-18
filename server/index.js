@@ -17,7 +17,7 @@ app.get('/', (_, res)=>{
 })
 
 // Routes
-app.use('/thought', addRoute)
+app.use('/thought', addRoute) // here addRoute is mounting on the /thought
 
 const port = require('./config/port');
 try{
