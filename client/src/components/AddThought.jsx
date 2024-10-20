@@ -1,20 +1,38 @@
-import {useState} from "react"
+import { useState } from "react";
 import thoughtService from "../services/thoughtService";
-const AddThought = ()=>{
-    const[state, setState] = useState();
-    const handleSubmit= (event)=>{
-        console.log(event);
+import Message from "./Message";
+
+const AddThought = () => {
+    const [state, setState] = useState('');
+    const [message, setMessage] = useState('');
+    const [showAlert, setShowAlert] = useState(false);
+
+    const handleSubmit = (event) => {
         event.preventDefault();
-        console.log(state + " handleSubmit()")
-        thoughtService(state)
+        // Only call thoughtService when state is not empty
+        if (state.trim() !== '') {
+            thoughtService(state, setMessage);
+            setShowAlert(true)
+            setState(''); // Clear input after submission
+        }else{
+            alert('Please fill the required field')
+        }
     }
-    return(
-        <div className="">
-            <div className="">
-                    <input type="text" onChange={(event)=>{setState(event.target.value)}} placeholder="Type your any thought which comes to mind.."/>
-                    <button type="submit" onClick={handleSubmit}>Submit</button>
+
+    return (
+        <div>
+            <div>
+                {message && showAlert && <Message message={message} setShowAlert={setShowAlert} />}
+                <input 
+                    type="text" 
+                    onChange={(event) => setState(event.target.value)} 
+                    placeholder="Type your thought which comes to mind.." 
+                    value={state}
+                />
+                <button type="submit" onClick={handleSubmit}>Submit</button>
             </div>
         </div>
     )
 }
+
 export default AddThought;
