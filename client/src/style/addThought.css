@@ -1,0 +1,26 @@
+.content .input-box{
+        width: 75%;
+        padding: 2%;
+        font-size: large;
+
+}
+.content .sbt-btn{
+        background-color: rgb(232, 118, 11);
+        width: 20%;
+        padding: 2%;
+        border: 1px solid rgb(232, 118, 11);
+        border-radius: 10px;
+        margin-left: 0.5%;
+        cursor:pointer;
+        font-size: large;
+
+}
+.content .sbt-btn:hover{
+        background-color: rgb(206, 102, 5);
+        width: 20%;
+        padding: 2%;
+        border: 1px solid rgb(232, 118, 11);
+        border-radius: 10px;
+        margin-left: 0.5%;
+        cursor:pointer;
+}

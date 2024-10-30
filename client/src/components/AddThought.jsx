@@ -1,6 +1,7 @@
 import { useState } from "react";
 import thoughtService from "../services/thoughtService";
 import Message from "./Message";
+import addThought from "../style/addThought.css";
 
 const AddThought = () => {
     const [state, setState] = useState('');
@@ -20,16 +21,18 @@ const AddThought = () => {
     }
 
     return (
-        <div>
-            <div>
+        <div className="container">
+            <div className="content">
                 {message && showAlert && <Message message={message} setShowAlert={setShowAlert} />}
                 <input 
                     type="text" 
+                    className="input-box"
                     onChange={(event) => setState(event.target.value)} 
-                    placeholder="Type your thought which comes to mind.." 
+                    placeholder="Tweet your thought.." 
                     value={state}
                 />
-                <button type="submit" onClick={handleSubmit}>Submit</button>
+                <button type="submit" onClick={handleSubmit} className="sbt-btn
+                ">Submit</button>
             </div>
         </div>
     )

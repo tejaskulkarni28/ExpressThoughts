@@ -1,8 +1,9 @@
 import getThoughts from '../services/getThoughts';
 import {useState, useEffect} from "react";
+import viewThought from '../style/viewThought.css';
+import thoughts from '../style/thoughts.css';
 const ViewThoughts = ()=>{
-        let count = 1;
-        const[thought, setThought] = useState([])
+                const[thought, setThought] = useState([])
         useEffect(()=>{
                 const fetch = async()=>{
                         const data = await getThoughts();
@@ -14,17 +15,22 @@ const ViewThoughts = ()=>{
         return(
                 // fragment thing
                 <> 
-                                        {
+                        <div className='container'>
+                                <div className='content'>
+                                {
                                                 thought.map((x, index) =>{
                                                         return(
-                                                                <div key={index}>
-                                                                {count++}
-                                                                <div>{x._id}</div>
-                                                                <div>{x.thought}</div>
+                                                                <div key={index} className='thoughtContainer'>
+                                                                        <div>
+                                                                                <div className="thoughtContent"><p>{x.thought}</p></div>
+                                                                        </div>
                                                                 </div>
                                                         )
                                                 })
                                         }
+                                </div>
+                                
+                        </div>                      
                 </>
         )
 }
