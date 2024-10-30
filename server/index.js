@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const connectDB = require('./config/db');
 const addRoute = require('./routes/addRoute');
+const viewRoute = require('./routes/viewRoute');
 
 const app = express();
 
@@ -17,7 +18,8 @@ app.get('/', (_, res)=>{
 })
 
 // Routes
-app.use('/thought', addRoute) // here addRoute is mounting on the /thought
+app.use('/thought', addRoute) // 1)
+app.use('/thought', viewRoute)  
 
 const port = require('./config/port');
 try{

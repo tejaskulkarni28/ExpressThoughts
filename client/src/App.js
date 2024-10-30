@@ -1,10 +1,10 @@
 import './App.css';
-import AddThought from './components/AddThought';
+import ThoughtsLayout from './layouts/ThoughtsLayout';
 
 function App() {
   return (
     <div className="App">
-        <AddThought/>
+        <ThoughtsLayout/>
     </div>
   );
 }
