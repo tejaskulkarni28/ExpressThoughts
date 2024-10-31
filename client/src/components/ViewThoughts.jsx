@@ -18,6 +18,7 @@ const ViewThoughts = ()=>{
                         <div className='container'>
                                 <div className='content'>
                                 {
+                                        thought.length <= 0 ? <h1>Thoughts not found! Please navigate to `Home` and write a thought.</h1> : 
                                                 thought.map((x, index) =>{
                                                         return(
                                                                 <div key={index} className='thoughtContainer'>
