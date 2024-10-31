@@ -3,7 +3,7 @@ import {useState, useEffect} from "react";
 import viewThought from '../style/viewThought.css';
 import thoughts from '../style/thoughts.css';
 const ViewThoughts = ()=>{
-                const[thought, setThought] = useState([])
+        const[thought, setThought] = useState([])
         useEffect(()=>{
                 const fetch = async()=>{
                         const data = await getThoughts();

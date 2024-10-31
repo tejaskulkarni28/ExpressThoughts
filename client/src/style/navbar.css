@@ -1,0 +1,31 @@
+/* navbar.css */
+.nav-container {
+        padding: 1%;
+        background-color: #f8f8f8;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        margin-bottom: 5%;
+    }
+    
+    .nav-content {
+        display: flex;
+        justify-content: center; /* Centers content horizontally */
+        gap: 20px; /*Adds space between links*/
+    }
+    
+    .nav-content p {
+        font-size: 1.3rem;
+        font-weight: 700;
+        margin: 0;
+        cursor: pointer;
+        color: black;
+        transition: color 0.3s ease;
+    }
+    
+    .nav-content a {
+        text-decoration: none; /* Removes underline from the links */
+    }
+    
+    .nav-content p:hover {
+        color: #007BFF; /* Changes color on hover */
+    }
+    

@@ -1,6 +1,6 @@
 .thoughtContainer{
         margin: 1px;
-        background-color: red;
+        /* background-color: red; */
 }
 .thoughtContent{
         padding: 2%;
@@ -8,5 +8,5 @@
 .thoughtContent p{
         font-size: 18px;
         padding: 2%;
-        background-color: blue;
+        background-color: white
 }
