@@ -1,0 +1,11 @@
+# VERSION: 1
+
+# CONTAINS:
+    -> User enters a thought.
+    -> User can see all the thoughts he entered.
+    -> Has a navigation bar (Home, Prespectives) 
+# STACK:
+    -> React, Node(Express), MongoDB.
+# DEVELOPER:
+    -> Tejas Kulkarni
+
