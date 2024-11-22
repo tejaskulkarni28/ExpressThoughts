@@ -1,8 +1,11 @@
-const { verifiedPassword, encryptedPassword } = require('../controllers/authController');
+const express = require('express')
+const router  = express.Router();
 
-const custom = async()=>{
-        const encryptedResult = await encryptedPassword('test');
-        const verificationResult = await verifiedPassword('test', encryptedResult);
-        return verificationResult;
-}
-custom();
+router.post('/register', )
+
+// const custom = async()=>{
+//         const encryptedResult = await encryptedPassword('test');
+//         const verificationResult = await verifiedPassword('test', encryptedResult);
+//         return verificationResult;
+// }
+// custom();
