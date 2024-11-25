@@ -1,8 +1,7 @@
 import { useState } from "react";
 import thoughtService from "../services/thoughtService";
 import Message from "./Message";
-import addThought from "../style/addThought.css";
-
+import '../style/addThought.css';
 const AddThought = () => {
     const [state, setState] = useState('');
     const [message, setMessage] = useState('');

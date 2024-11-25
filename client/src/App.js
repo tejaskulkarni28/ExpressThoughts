@@ -6,8 +6,10 @@ import NavBar from './components/NavBar';
 import Register from "./pages/Register";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Login from "./pages/Login";
+import { useSelector } from "react-redux";
 function App() {
-  const isAuthenticated = false;
+  // const isAuthenticated = true;
+  const isAuthenticated = useSelector(state=>state.loginAuthReducer.isAuthenticated)
   return (
     <div className="App">
       <BrowserRouter>
@@ -15,7 +17,7 @@ function App() {
         <Routes>
           {/*Public Routes */}
           <Route path="/login" element={<Login />} />
-          <Route path="register" element={<Register />} />
+          <Route path="/register" element={<Register />} />
 
           {/*Protected Routes*/}
           <Route path="/" element={

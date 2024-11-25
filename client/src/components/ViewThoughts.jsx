@@ -1,12 +1,12 @@
 import getThoughts from '../services/getThoughts';
 import {useState, useEffect} from "react";
-import viewThought from '../style/viewThought.css';
-import thoughts from '../style/thoughts.css';
+import "../style/viewThought.css"
 const ViewThoughts = ()=>{
         const[thought, setThought] = useState([])
         useEffect(()=>{
                 const fetch = async()=>{
                         const data = await getThoughts();
+                        console.log(`/client/component/viewthoughts/useeffect data ${data}`)
                         setThought(data)
                         console.log(data)
                 }

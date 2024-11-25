@@ -18,9 +18,9 @@ app.get('/', (_, res)=>{
 })
 
 // Routes
-app.use('/thought', addRoute) // 1)
-app.use('/thought', viewRoute)  
-app.use('/', authRoute)
+app.use("/thought", addRoute) // 1)
+app.use("/thought", viewRoute)  
+app.use("/auth", authRoute)
 
 const port = require('./config/port');
 try{
