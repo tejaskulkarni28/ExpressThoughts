@@ -1,7 +1,9 @@
-const express = require('express')
+const express = require('express');
+const loginAuthController = require('../controllers/loginAuthController');
 const router  = express.Router();
 
-router.post('/register', )
+// router.post('/register', )
+router.post('/login', loginAuthController);
 
 // const custom = async()=>{
 //         const encryptedResult = await encryptedPassword('test');
@@ -9,3 +11,5 @@ router.post('/register', )
 //         return verificationResult;
 // }
 // custom();
+
+module.exports = router;

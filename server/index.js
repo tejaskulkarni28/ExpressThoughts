@@ -3,7 +3,7 @@ const cors = require('cors');
 const connectDB = require('./config/db');
 const addRoute = require('./routes/addRoute');
 const viewRoute = require('./routes/viewRoute');
-
+const authRoute = require('./routes/authRoute');
 const app = express();
 
 // Connect to MongoDB
@@ -20,6 +20,7 @@ app.get('/', (_, res)=>{
 // Routes
 app.use('/thought', addRoute) // 1)
 app.use('/thought', viewRoute)  
+app.use('/', authRoute)
 
 const port = require('./config/port');
 try{
