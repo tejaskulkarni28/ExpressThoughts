@@ -7,7 +7,7 @@ import Register from "./pages/Register";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Login from "./pages/Login";
 function App() {
-  const isAuthenticated = true;
+  const isAuthenticated = false;
   return (
     <div className="App">
       <BrowserRouter>
