@@ -13,7 +13,6 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <NavBar />
         <Routes>
           {/*Public Routes */}
           <Route path="/login" element={<Login />} />
@@ -22,11 +21,13 @@ function App() {
           {/*Protected Routes*/}
           <Route path="/" element={
             <ProtectedRoute isAuthenticated={isAuthenticated} >
+              <NavBar />
               <Home />
             </ProtectedRoute>
           } />
           <Route path='/my-thoughts' element={
             <ProtectedRoute isAuthenticated={isAuthenticated}>
+            <NavBar />
             <ViewThoughts/>
             </ProtectedRoute>
           }/>

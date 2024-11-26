@@ -21,12 +21,16 @@ const Login = ()=>{
                         console.log(result)
                 }
         }
+        const handleRoute = (event)=>{
+                event.preventDefault();
+                navigate("/register");
+        }
         return(
                 <>
                         <input type="text" onChange={(event)=>{setUserName(event.target.value)}} value={username} placeholder="your username" />
                         <input type="text" onChange={(event)=>{setPlainPassword(event.target.value)}} value={plainPassword} placeholder="your password" />
                         <button onClick={handleSubmit}>Login</button>
-                        <button>Register</button>
+                        <button onClick={handleRoute}>Register</button>
                 </>
         )
 }
