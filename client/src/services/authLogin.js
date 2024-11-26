@@ -6,17 +6,7 @@ export const authLogin =  async(username, plainPassword)=>{
                         username: username,
                         plainpassword: plainPassword
                 })
-                if(response.status === 200 && response.data.success && response.data.message === "Login successfull"){
-                        return true;
-                }else{
-                        console.log(`authLogin: ${response.status}`)
-                        console.log(`authLogin: ${response.data.message}`)
-                        console.log(`authLogin: ${response.data.success}`)
-                        console.log(`authLogin: ${response.data.error}`)
-                        console.log(`authLogin: ${username} and ${plainPassword}`)
-
-                        return false;
-                }
+                return response;
         }catch(error){
                 console.log(error)
         }

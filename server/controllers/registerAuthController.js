@@ -7,20 +7,32 @@ const registerAuthController = async(req, res)=>{
                 const encryptedPassword = await encryptPassword(plainpassword);
                 console.log(`/server/registerAuthController.js/ ${encryptedPassword}`)
 
-                const userSaved = await new usermodel({
-                        username: username,
-                        password: encryptedPassword,
-                        createdAt: Date.now()
-                }).save();
-                console.log(`User saved: ${userSaved}`)
-                res.status(200).json({
-                        success: true,
-                        message: "Success"
-                })
-                
+                const alreadyUser = await usermodel.findOne({username: username});
+                if(alreadyUser){
+                        console.log(alreadyUser)
+                        res.status(200).json({
+                                success: false,
+                                message: "Username already taken"
+                        })
+                }else{
+                        console.log(alreadyUser)
+                        const userSaved = await new usermodel({
+                                username: username,
+                                password: encryptedPassword,
+                                createdAt: Date.now()
+                        }).save();
+                        console.log(`User saved: ${userSaved}`)
+                        res.status(200).json({
+                                success: true,
+                                message: "New user registered"
+                        })
+                }
         }catch(error){
                 console.log(error)
-                res.status(500).send('Server error');
+                res.status(500).json({
+                        success: false,
+                        message: "Server error while registering user. "
+                })
         }
 }
 module.exports = registerAuthController;

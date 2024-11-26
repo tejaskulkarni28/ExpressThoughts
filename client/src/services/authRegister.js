@@ -8,9 +8,9 @@ export const authRegister = async(username, plainPassword)=>{
                                 plainpassword: plainPassword
                         }
                 )
-                console.log(`authRegister: ${response}`)
-                return false;
+                return response;
         }catch(error){
-                console.log(error)
+                console.error(`Error in authRegister: ${error}`);
+                throw error;
         }
 }
