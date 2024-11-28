@@ -1,7 +1,10 @@
 import getThoughts from '../services/getThoughts';
 import {useState, useEffect} from "react";
-import "../style/viewThought.css"
+import "../style/viewThought.css";
+import { useLocation } from 'react-router-dom';
 const ViewThoughts = ()=>{
+        const sessionUserId = sessionStorage.getItem('userid');
+        console.log(`view thoughts: sessionUserId ${sessionUserId}`);
         const[thought, setThought] = useState([])
         useEffect(()=>{
                 const fetch = async()=>{

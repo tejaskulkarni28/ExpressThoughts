@@ -22,7 +22,7 @@ const loginAuthController = async(req, res) => {
               message: "User not found"
             })
         }else{
-          const isMatch = await bcrypt.compare(plainpassword, user.password)
+        const isMatch = await bcrypt.compare(plainpassword, user.password)
           if (!isMatch) {
             return res
               .status(200)
@@ -30,10 +30,22 @@ const loginAuthController = async(req, res) => {
                 success: false,
                 message: "Invalid credentials"
               });
+          }else{
+              // login successful, return sucess response
+              // Attaching userid to json response for further purpose after the user is logged.
+              const userid = user._id;
+              const username = user.username;
+              const createdAt = user.createdAt;
+              console.log(`User ID: ${userid}, Username: ${username}, CreatedAt: ${createdAt}`)
+              res.status(200).json({
+                success: true, 
+                message: "Login successfull", 
+                userid,
+                username,
+                createdAt
+              })
           }
         }
-        // login successful, return sucess response
-        res.status(200).json({success: true, message: "Login successfull"})
       } catch (error) {
 
       }

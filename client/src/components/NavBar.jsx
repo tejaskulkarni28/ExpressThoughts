@@ -5,8 +5,10 @@ const NavBar = ()=>{
         return(
                 <div className="nav-container">
                         <div className="nav-content">
+                        {/* Link declarative for example when `user clicks` */}
                             <Link to="/" ><p>Home</p></Link>
                             <Link to="/my-thoughts"><p>Perspectives</p></Link>
+                            <Link to="/login"><p>Logout</p></Link>
                         </div>
                 </div>
         )

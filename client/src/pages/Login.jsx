@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { authLogin } from "../services/authLogin";
 import {useDispatch} from "react-redux";
 import { login } from "../redux/slices/loginAuthSlice";
@@ -17,8 +17,10 @@ const Login = ()=>{
                 try{
                         const response = await authLogin(username, plainPassword);
                         if(response?.status === 200 && response?.data.success === true){
+                                // one time sessionStorage.setItem() `after login`
+                                sessionStorage.setItem('userid', response?.data.userid);
                                 dispatch(login());
-                                navigate("/");
+                                navigate("/", {state: {userid: sessionStorage.getItem('userid')}}); // going to retrieve through useLocation() hook
                                 console.log(`response status: ${response.data.message}`)
                                 setFeedbackMessage(response?.data.message)
                                 setShowAlert(true);    
@@ -34,7 +36,7 @@ const Login = ()=>{
                         // setFeedbackMessage(response.data.message);
                         // setShowAlert(true);
                 }
-        }
+        } 
         const handleRoute = (event)=>{
                 event.preventDefault();
                 navigate("/register");
