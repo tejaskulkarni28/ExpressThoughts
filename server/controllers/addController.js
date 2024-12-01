@@ -2,10 +2,11 @@ const thoughtmodel = require('../models/thoughts')
 
 const addThought = async (req, res)=>{
         try{
-                let thought = req.body.data;
+                const {thought, sessionUserId} = req.body.data;
                 if(Boolean(thought)){
                         const savedThought = await new thoughtmodel({
-                                        thought: req.body.data.trim()
+                                        thought: thought,
+                                        userId: sessionUserId
                         }).save()
                         console.log('Thought saved: ', savedThought)
                         return res.status(201).json({ // 201 code means: request succeeded

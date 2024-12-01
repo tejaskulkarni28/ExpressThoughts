@@ -2,16 +2,18 @@ import { useState } from "react";
 import thoughtService from "../services/thoughtService";
 import Message from "./Message";
 import '../style/addThought.css';
-const AddThought = () => {
+const AddThought = (props) => {
     const [state, setState] = useState('');
     const [message, setMessage] = useState('');
     const [showAlert, setShowAlert] = useState(false);
+    const sessionUserId = props.sessionUserId;
+    console.log(`AddThought userid prop: ${sessionUserId}`);
 
     const handleSubmit = (event) => {
         event.preventDefault();
         // Only call thoughtService when state is not empty
         if (state.trim() !== '') {
-            thoughtService(state, setMessage);
+            thoughtService(state, sessionUserId, setMessage);
             setShowAlert(true)
             setState(''); // Clear input after submission
         }else{
