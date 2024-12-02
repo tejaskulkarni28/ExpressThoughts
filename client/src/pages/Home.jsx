@@ -1,7 +1,7 @@
 import AddThought from "../components/AddThought";
 import NavBar from "../components/NavBar";
 import Feed from "../components/Feed";
-import '../style/addThought.css';
+import '../style/addThought.module.css';
 import { sessionItems } from "../services/sessionStorage";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";

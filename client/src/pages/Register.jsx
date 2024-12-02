@@ -2,6 +2,7 @@ import { useState } from "react";
 import {useNavigate} from "react-router-dom";
 import { authRegister } from "../services/authRegister";
 import Message from "../components/Message";
+import registerStyle from '../style/register.module.css';
 const Register = ()=>{
         const [username, setUserName] = useState('');
         const [password, setPassword] = useState('');
@@ -33,12 +34,13 @@ const Register = ()=>{
         }
         return(
                 <>
-                        <input type="text" onChange={(event)=>{setUserName(event.target.value)}} value={username} placeholder="create username" required/>
+                <div className={registerStyle.container}>
+                        <input type="text" onChange={(event)=>{setUserName(event.target.value)}} value={username} placeholder="create username" className={registerStyle.inputBox} required/>
                         <input type="text" onChange={(event)=>{
                                 setPassword(event.target.value) 
-                        }} value={password} placeholder="create password" required/>
-                        <button onClick={handleSubmit}>Register</button>
-                        <button onClick={handleRoute}>Login</button>
+                        }} value={password} placeholder="create password" className={registerStyle.inputBox} required/>
+                        <button onClick={handleSubmit} className={`${registerStyle.button} ${registerStyle.registerButton} `}>Register</button>
+                        <button onClick={handleRoute} className={`${registerStyle.button} ${registerStyle.loginButton} `}>Login</button>
 
                         {
                                 showAlert && (
@@ -48,6 +50,7 @@ const Register = ()=>{
                                         />
                                 )
                         }
+                        </div>
                 </>
         )
 }

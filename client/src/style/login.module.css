@@ -1,0 +1,87 @@
+.container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+}
+
+.inputBox {
+    width: 100%;
+    padding: 10px 15px;
+    margin-bottom: 15px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.inputBox:focus {
+    border-color: #4a90e2;
+    box-shadow: 0 0 6px rgba(74, 144, 226, 0.5);
+    outline: none;
+}
+
+.button {
+    width: 48%;
+    padding: 10px 15px;
+    margin: 5px 1%;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.loginButton {
+    background-color: #4caf50;
+    color: #fff;
+}
+
+.loginButton:hover {
+    background-color: #3e8e41;
+    transform: translateY(-2px);
+}
+
+.loginButton:active {
+    background-color: #367c39;
+    transform: translateY(0);
+}
+
+.registerButton {
+    background-color: #2196f3;
+    color: #fff;
+}
+
+.registerButton:hover {
+    background-color: #1e88e5;
+    transform: translateY(-2px);
+}
+
+.registerButton:active {
+    background-color: #1976d2;
+    transform: translateY(0);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+
+    .inputBox,
+    .button {
+        font-size: 0.9rem;
+        padding: 8px 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .button {
+        width: 100%;
+        margin: 5px 0;
+    }
+}

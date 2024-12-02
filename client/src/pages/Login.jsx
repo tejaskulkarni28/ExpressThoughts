@@ -4,6 +4,7 @@ import {useDispatch} from "react-redux";
 import { login } from "../redux/slices/loginAuthSlice";
 import { useNavigate } from "react-router-dom";
 import Message from "../components/Message";
+import loginStyle from '../style/login.module.css';
 const Login = ()=>{
         const navigate = useNavigate();
         const[username, setUserName] = useState('');
@@ -41,20 +42,51 @@ const Login = ()=>{
                 event.preventDefault();
                 navigate("/register");
         }
-        return(
-                <>
-                        <input type="text" onChange={(event)=>{setUserName(event.target.value)}} value={username} placeholder="your username" required/>
-                        <input type="text" onChange={(event)=>{setPlainPassword(event.target.value)}} value={plainPassword} placeholder="your password" required/>
-                        <button onClick={handleSubmit}>Login</button>
-                        <button onClick={handleRoute}>Register</button>
-                        {
-                                showAlert && (
-                                        <Message message={feedbackMessage} setShowAlert={setShowAlert}
-                                        />
-                                )
-                        }
-                </>
-        )
+        // return(
+        //         <>
+        //                 <input type="text" onChange={(event)=>{setUserName(event.target.value)}} value={username} placeholder="your username" required/>
+        //                 <input type="text" onChange={(event)=>{setPlainPassword(event.target.value)}} value={plainPassword} placeholder="your password" required/>
+        //                 <button onClick={handleSubmit}>Login</button>
+        //                 <button onClick={handleRoute}>Register</button>
+        //                 {
+        //                         showAlert && (
+        //                                 <Message message={feedbackMessage} setShowAlert={setShowAlert}
+        //                                 />
+        //                         )
+        //                 }
+        //         </>
+        // )
+        return (
+                <div className={loginStyle.container}>
+                    <input
+                        type="text"
+                        onChange={(event) => setUserName(event.target.value)}
+                        value={username}
+                        placeholder="Your username"
+                        required
+                        className={loginStyle.inputBox}
+                    />
+                    <input
+                        type="text"
+                        onChange={(event) => setPlainPassword(event.target.value)}
+                        value={plainPassword}
+                        placeholder="Your password"
+                        required
+                        className={loginStyle.inputBox}
+                    />
+                    <button onClick={handleSubmit} className={`${loginStyle.button} ${loginStyle.loginButton}`}>
+                        Login
+                    </button>
+                    <button onClick={handleRoute} className={`${loginStyle.button} ${loginStyle.registerButton}`}>
+                        Register
+                    </button>
+                    {showAlert && (
+                        <Message message={feedbackMessage} setShowAlert={setShowAlert} />
+                    )}
+                </div>
+            );
+            
+            
 }
 
 export default Login;
