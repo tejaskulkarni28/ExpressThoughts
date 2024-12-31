@@ -7,9 +7,12 @@ import Register from "./pages/Register";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Login from "./pages/Login";
 import { useSelector } from "react-redux";
+
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 function App() {
-  // const isAuthenticated = true;
-  const isAuthenticated = useSelector(state=>state.loginAuthReducer.isAuthenticated)
+  const isAuthenticated = true;
+  // const isAuthenticated = useSelector(state=>state.loginAuthReducer.isAuthenticated)
   return (
     <div className="App">
       <BrowserRouter>

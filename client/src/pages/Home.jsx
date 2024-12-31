@@ -28,7 +28,9 @@ const Home = ()=>{
         return(
                 <>
                 <AddThought sessionUserId={sessionUserId}/>
-                <Feed sessionUserId={sessionUserId}/>
+
+
+                <Feed sessionUserId={sessionUserId} />
                 </>
         )
 }
