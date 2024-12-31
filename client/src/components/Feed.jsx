@@ -1,15 +1,18 @@
 import React, { useState } from "react";
 import { Button, Card, Form, Container } from "react-bootstrap";
+import { likeService } from "../services/feedService";
 
 // import { likeController, commentController, likeService} from "../services/feedService";
 
 const Feed = ({sessionUserId, entireThoughtSec}) => {
 
-  const{thought, likes, comments } = entireThoughtSec;
+  console.log(`Session User Id from Feed: ${sessionUserId}`);
+  const{_id, thought, likes, comments } = entireThoughtSec;
 
   const [tweet, setTweet] = useState({
     // username: "Tejas Kulkarni",
-    location: "Mumbai, India",
+    userId: _id,
+    location: "India",
     content: thought,
     likes: likes,
     comments: comments || "No comments",
@@ -18,11 +21,19 @@ const Feed = ({sessionUserId, entireThoughtSec}) => {
   const [showComments, setShowComments] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
   const handleLike = () => {
+    const updatedLikes =  isLiked ? tweet.likes - 1 : tweet.likes + 1;
+    const tweetUserId = tweet.userId;
     setIsLiked(!isLiked);
     setTweet((prevTweet) => ({
       ...prevTweet,
-      likes: isLiked ? prevTweet.likes - 1 : prevTweet.likes + 1,
+      likes: updatedLikes,
     }));
+
+    try{ 
+      likeService({tweetUserId, updatedLikes})
+    }catch(error){
+      console.log(error)
+    }
   };
 
   const [newComment, setNewComment] = useState("");
