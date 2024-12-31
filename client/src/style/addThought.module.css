@@ -1,0 +1,56 @@
+/* Reset margin and padding for better control */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Container to center everything */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Card container */
+.content {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 100%;
+    max-width: 600px;  /* Optional: Limit max width of the card */
+}
+
+/* Ensure input takes full width */
+.input-box {
+    width: 100%;  /* Ensure the input box takes full width */
+    padding: 12px;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    background-color: #f9f9f9;
+    outline: none;
+}
+
+/* Button styling */
+.sbt-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #093f7c;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
+/* Responsive styling for smaller screens */
+@media (max-width: 768px) {
+    .content {
+        padding: 20px;
+    }
+}

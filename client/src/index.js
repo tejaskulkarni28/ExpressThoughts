@@ -1,19 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import AddThought from './components/AddThought';
-import ViewThoughts from './components/ViewThoughts';
-import Home from './pages/Home';
-import NavBar from './components/NavBar';
+import App from './App';
+import {Provider} from 'react-redux';
+import store from './redux/store/store';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    <BrowserRouter>
-    <NavBar/>
-        <Routes>
-            <Route path='/' element={<Home/>} />
-            <Route path='/my-thoughts' element={<ViewThoughts/>}/>
-        </Routes>
-    </BrowserRouter>
+    <Provider store={store}>
+        <App/>
+    </Provider>
 );

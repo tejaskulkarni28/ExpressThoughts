@@ -1,0 +1,50 @@
+.feedContainer {
+        width: 400px;
+        margin: 20px auto;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        background-color: #f9f9f9;
+      }
+      
+      .tweet {
+        padding: 10px;
+        border-bottom: 1px solid #ddd;
+      }
+      
+      .tweetHeader {
+        display: flex;
+        justify-content: space-between;
+        font-weight: bold;
+      }
+      
+      .tweetContent {
+        margin: 10px 0;
+      }
+      
+      .tweetActions {
+        margin-top: 10px;
+      }
+      
+      button {
+        padding: 5px 10px;
+        margin-right: 10px;
+        cursor: pointer;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+      }
+      
+      button:hover {
+        background-color: #0056b3;
+      }
+      
+      .comments {
+        margin-top: 10px;
+      }
+      
+      .comment {
+        margin-bottom: 5px;
+      }
+      
