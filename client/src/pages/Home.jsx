@@ -5,6 +5,7 @@ import '../style/addThought.module.css';
 import { sessionItems } from "../services/sessionStorage";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import {fetchThoughts} from "../services/feedService";
 const Home = ()=>{
         // the below code was showing me null for the first render
         // therefore I need to handle the first render which is initialValue of sessionStorage
@@ -23,14 +24,35 @@ const Home = ()=>{
         // }
 
         // const sessionUserId = useLocation().state.userid;
+        const[feed, setFeed] = useState([]);
         const sessionUserId = sessionStorage.getItem('userid');
+        const[saved, setSaved] = useState(false);
         console.log(`Home:userid: ${sessionUserId}`)
+        useEffect(()=>{
+                const fetchAllThoughts = async ()=>{
+                        try{
+                                const feeds = await fetchThoughts();
+                                setFeed(feeds.thoughts)
+                                console.log("newly fetched feeds: ", feeds)
+                        }catch(error){
+                                console.log(error)
+                        }
+                }
+                fetchAllThoughts();
+                setSaved(false); // set it to false after all the thoughts are fetched.
+        },[saved])
         return(
                 <>
-                <AddThought sessionUserId={sessionUserId}/>
+                <AddThought sessionUserId={sessionUserId} setSaved={setSaved} />
 
-
-                <Feed sessionUserId={sessionUserId} />
+                {
+                        feed.map((item, index)=>{
+                                return(
+                                        <Feed key={index} sessionUserId={sessionUserId} entireThoughtSec = {item} />
+                                )
+                        })
+                }
+                {/* <Feed sessionUserId={sessionUserId} /> */}
                 </>
         )
 }

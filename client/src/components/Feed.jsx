@@ -3,17 +3,16 @@ import { Button, Card, Form, Container } from "react-bootstrap";
 
 // import { likeController, commentController, likeService} from "../services/feedService";
 
-const Feed = (...props) => {
+const Feed = ({sessionUserId, entireThoughtSec}) => {
+
+  const{thought, likes, comments } = entireThoughtSec;
 
   const [tweet, setTweet] = useState({
-    username: "Tejas Kulkarni",
+    // username: "Tejas Kulkarni",
     location: "Mumbai, India",
-    content: "This is a tweet-like post. #react #frontend",
-    likes: 25,
-    comments: [
-      { user: "Yogini Kulkarni", comment: "Great post!" },
-      { user: "Harish Kulkarni", comment: "Nice work!" },
-    ],
+    content: thought,
+    likes: likes,
+    comments: comments || "No comments",
   });
 
   const [showComments, setShowComments] = useState(false);
