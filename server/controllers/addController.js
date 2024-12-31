@@ -22,7 +22,7 @@ const addThought = async (req, res)=>{
                 }
         }catch(error){
                 console.log('Error saving the thought:', error)
-                return res.status(400).json({
+                return res.status(404).json({
                         success: false,
                         message: 'Error found while saving the thought',
                         error: error.message
