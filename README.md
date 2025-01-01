@@ -16,7 +16,7 @@ A MERN (MongoDB, Express.js, React.js, Node.js) stack project that enables users
 
 ## 🛠️ Tech Stack
 
-- **Frontend**: React.js
+- **Frontend**: React.js, Redux
 - **Backend**: Node.js, Express.js
 - **Database**: MongoDB
 - **State Management**: React Hooks
