@@ -1,28 +1,26 @@
 import React, { useState } from "react";
 import { Button, Card, Form, Container } from "react-bootstrap";
-import { likeService } from "../services/feedService";
+import { commentService, likeService } from "../services/feedService";
 
-// import { likeController, commentController, likeService} from "../services/feedService";
-
-const Feed = ({sessionUserId, entireThoughtSec}) => {
-
+const Feed = ({ sessionUserId, entireThoughtSec }) => {
   console.log(`Session User Id from Feed: ${sessionUserId}`);
-  const{_id, thought, likes, comments, userId } = entireThoughtSec;
+  const { _id, thought, likes, comments, userId } = entireThoughtSec;
 
   const [tweet, setTweet] = useState({
-    // username: "Tejas Kulkarni",
     userId: _id,
     username: userId.username,
     location: "India",
     content: thought,
     likes: likes,
-    comments: comments || "No comments",
+    comments: comments || [], // Ensure comments is an array
   });
 
   const [showComments, setShowComments] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
+  const [newComment, setNewComment] = useState("");
+
   const handleLike = () => {
-    const updatedLikes =  isLiked ? tweet.likes - 1 : tweet.likes + 1;
+    const updatedLikes = isLiked ? tweet.likes - 1 : tweet.likes + 1;
     const tweetUserId = tweet.userId;
     setIsLiked(!isLiked);
     setTweet((prevTweet) => ({
@@ -30,26 +28,38 @@ const Feed = ({sessionUserId, entireThoughtSec}) => {
       likes: updatedLikes,
     }));
 
-    try{ 
-      likeService({tweetUserId, updatedLikes})
-    }catch(error){
-      console.log(error)
+    try {
+      likeService({ tweetUserId, updatedLikes });
+    } catch (error) {
+      console.log(error);
     }
   };
 
-  const [newComment, setNewComment] = useState("");
   const handleCommentChange = (e) => {
     setNewComment(e.target.value);
   };
 
   const handleCommentSubmit = () => {
     if (newComment.trim()) {
+      const newCommentObj = {
+        commenterId: sessionUserId, // Using sessionUserId for the commenter
+        commenterUsername: sessionStorage.getItem('username'), // Assuming username is passed in userId
+        comment: newComment,
+        commentedAt: new Date().toISOString(), // Use ISO format for timestamps
+        tweetUserId: tweet.userId
+      };
+      console.log(`lalalala: ${tweet.userId}`)
+
+
+      try{
+        commentService({newCommentObj})
+      }
+      catch(error){
+        console.log(error)
+      }
       setTweet((prevTweet) => ({
         ...prevTweet,
-        comments: [
-          ...prevTweet.comments,
-          { user: "Anonymous", comment: newComment },
-        ],
+        comments: [...prevTweet.comments, newCommentObj],
       }));
       setNewComment("");
     }
@@ -88,7 +98,10 @@ const Feed = ({sessionUserId, entireThoughtSec}) => {
             <div className="comments-list mt-3">
               {tweet.comments.map((comment, index) => (
                 <div key={index} className="comment mb-2">
-                  <strong>{comment.user}:</strong> {comment.comment}
+                  <strong>{comment.commenterUsername}:</strong> {comment.comment}
+                  <div className="text-muted" style={{ fontSize: "0.8rem" }}>
+                    {new Date(comment.commentedAt).toLocaleString()}
+                  </div>
                 </div>
               ))}
             </div>
@@ -100,7 +113,7 @@ const Feed = ({sessionUserId, entireThoughtSec}) => {
             placeholder="Add a comment..."
             value={newComment}
             onChange={handleCommentChange}
-            className="input-box mt-3"  // Ensure this class is applied for width
+            className="input-box mt-3"
           />
           <Button
             variant="secondary"

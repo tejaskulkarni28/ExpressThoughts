@@ -7,10 +7,11 @@ router.get('/view', viewThought)
 
 const {addThought} = require('../controllers/addController')
 const {allThoughts, allThoughtsWithUsername} = require('../controllers/allThoughts');
-const { likeController } = require('../controllers/feedController');
+const { likeController, commentController } = require('../controllers/feedController');
 
 router.post('/add', addThought) // 2) 
 router.get('/all', allThoughts);
 router.get('/all/withusers', allThoughtsWithUsername)
 router.post('/liked', likeController)
+router.post('/comment/submit', commentController)
 module.exports=router;

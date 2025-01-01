@@ -20,6 +20,7 @@ const Login = ()=>{
                         if(response?.status === 200 && response?.data.success === true){
                                 // one time sessionStorage.setItem() `after login`
                                 sessionStorage.setItem('userid', response?.data.userid);
+                                sessionStorage.setItem('username', response?.data.username)
                                 dispatch(login());
                                 navigate("/", {state: {userid: sessionStorage.getItem('userid')}}); // going to retrieve through useLocation() hook
                                 console.log(`response status: ${response.data.message}`)
