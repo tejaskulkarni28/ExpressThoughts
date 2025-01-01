@@ -5,7 +5,9 @@ import '../style/addThought.module.css';
 import { sessionItems } from "../services/sessionStorage";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import {fetchThoughts} from "../services/feedService";
+// import {fetchThoughts} from "../services/feedService";
+import {fetchThoughtsWithUsernames} from "../services/feedService";
+// import getThoughts from "../services/getThoughts";
 const Home = ()=>{
         // the below code was showing me null for the first render
         // therefore I need to handle the first render which is initialValue of sessionStorage
@@ -31,7 +33,8 @@ const Home = ()=>{
         useEffect(()=>{
                 const fetchAllThoughts = async ()=>{
                         try{
-                                const feeds = await fetchThoughts();
+                                const feeds = await fetchThoughtsWithUsernames();
+                                // const feeds = await getThoughts();
                                 setFeed(feeds.thoughts)
                                 console.log("newly fetched feeds: ", feeds)
                         }catch(error){

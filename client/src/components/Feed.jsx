@@ -7,11 +7,12 @@ import { likeService } from "../services/feedService";
 const Feed = ({sessionUserId, entireThoughtSec}) => {
 
   console.log(`Session User Id from Feed: ${sessionUserId}`);
-  const{_id, thought, likes, comments } = entireThoughtSec;
+  const{_id, thought, likes, comments, userId } = entireThoughtSec;
 
   const [tweet, setTweet] = useState({
     // username: "Tejas Kulkarni",
     userId: _id,
+    username: userId.username,
     location: "India",
     content: thought,
     likes: likes,
