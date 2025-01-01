@@ -10,8 +10,25 @@ const likeService = async({tweetUserId, updatedLikes})=>{
                 console.log(error)
         }
 }
-const commentService = async(...props)=>{
-
+const commentService = async({newCommentObj})=>{
+        const {commenterId, commenterUsername, comment, commentedAt, tweetUserId} = newCommentObj
+        console.log('Below is map method')
+        // props.map(item=>{
+        //         console.log(item)
+        // })
+        try{
+                axios.post('http://localhost:3001/thought/comment/submit', {
+                        
+                        commenterId,
+                        commenterUsername,
+                        comment,
+                        commentedAt,
+                        tweetUserId
+                        
+                })
+        }catch(error){
+                console.log(error)
+        }
 }
 // const fetchThoughts = async()=>{
 //         try{

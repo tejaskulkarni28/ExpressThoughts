@@ -10,8 +10,9 @@ const thoughtSchema = new schema({
     comments: [
         {
             commenterId: { type: schema.Types.ObjectId, ref: 'users'},
+            commenterUsername: {type: String, default: ""},
             comment: { type: String, default: "" },
-            commentedAt: { type: Date, default: Date.now }
+            commentedAt: { type: Date, default: Date.now }  
         }
     ]
 
