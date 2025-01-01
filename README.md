@@ -29,15 +29,20 @@ A MERN (MongoDB, Express.js, React.js, Node.js) stack project that enables users
 ├── client
 │   ├── src
 │   │   ├── components
+│   │   ├── pages
+│   │   ├── redux
 │   │   ├── services
+│   │   ├── style
 │   │   ├── App.js
 │   │   └── index.js
 ├── server
+│   ├── auth
+│   ├── config
 │   ├── controllers
 │   ├── models
-│   ├── routes
-│   ├── app.js
+|   ├── routes
 │   └── index.js
+│   
 └── README.md
 
 
