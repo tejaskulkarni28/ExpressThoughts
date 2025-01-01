@@ -8,6 +8,7 @@ const getThoughts = async(req, res)=>{
                                 'sessionUserId': sessionUserId
                         }
                 })
+                console.log('hehehe')
                 console.log(response.data.thoughts)
                 return response.data.thoughts;
         }catch(error){
